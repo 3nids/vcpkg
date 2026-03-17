@@ -1,0 +1,18 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1234567..abcdefg 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -365,10 +365,8 @@
+     target_link_libraries(${name} PRIVATE ${H3_LINK_FLAGS})
+     target_compile_features(${name} PUBLIC c_std_99)
+ 
+-    find_library(M_LIB m)
+-    if(NOT(M_LIB))
+-        find_library(M_LIB m PATHS ${CMAKE_C_IMPLICIT_LINK_DIRECTORIES})
+-    endif()
++    include(CheckLibraryExists)
++    check_library_exists(m sin "" M_LIB)
+     if(M_LIB)
+-        target_link_libraries(${name} PUBLIC ${M_LIB})
++        target_link_libraries(${name} PUBLIC m)
+     endif()

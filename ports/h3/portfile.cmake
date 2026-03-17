@@ -6,6 +6,8 @@ vcpkg_from_github(
     REF "v${VERSION}"
     SHA512 e8a87c109ba917887483c73b0410bfd11f9259815ba7f9b967779963c9a7a5c208d70f0d6f6ae586ff371feeab3e19d96273137b42fd03a84ae08965bb8ea643
     HEAD_REF master
+    PATCHES
+        fix-libm-apple-sdk.patch
 )
 
 vcpkg_cmake_configure(
